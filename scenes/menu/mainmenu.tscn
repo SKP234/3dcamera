@@ -1,0 +1,33 @@
+[gd_scene load_steps=3 format=3 uid="uid://bxu4eecdkn3lr"]
+
+[ext_resource type="Script" path="res://scenes/menu/mainmenu.gd" id="1_pikna"]
+[ext_resource type="PackedScene" uid="uid://d11fx2g8jhy4s" path="res://scenes/poop/nothing.tscn" id="2_j2p7m"]
+
+[node name="mainmenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_pikna")
+nothingscene = ExtResource("2_j2p7m")
+
+[node name="nothing" type="Button" parent="."]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 587.0
+offset_right = 81.0
+offset_bottom = 627.0
+text = "nothing"
+
+[node name="exitbutton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 277.0
+offset_top = 533.0
+offset_right = 640.0
+offset_bottom = 618.0
+text = "exit"
+
+[connection signal="pressed" from="nothing" to="." method="_on_nothing_pressed"]
+[connection signal="pressed" from="exitbutton" to="." method="_on_exitbutton_pressed"]

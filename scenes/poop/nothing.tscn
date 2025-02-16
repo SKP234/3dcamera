@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://d11fx2g8jhy4s"]
+
+[ext_resource type="Texture2D" uid="uid://dvx8tkoh21osw" path="res://ffxiv-arena-images-master/ffxiv-arena-images-master/ucob/ucob-p3.png" id="1_1iqup"]
+[ext_resource type="PackedScene" uid="uid://2qkmxb3mug2j" path="res://scenes/player/player.tscn" id="1_6ms7h"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xcy4h"]
+size = Vector3(100, 2, 100)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_55kdd"]
+albedo_texture = ExtResource("1_1iqup")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_8wt20"]
+material = SubResource("StandardMaterial3D_55kdd")
+size = Vector2(100, 100)
+center_offset = Vector3(0, 1, 0)
+
+[node name="nothing" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.617036, -0.46919, 0.631765, 0, 0.802817, 0.596225, -0.786935, 0.367892, -0.495367, 0, 0, 0)
+shadow_enabled = true
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+shape = SubResource("BoxShape3D_xcy4h")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+mesh = SubResource("PlaneMesh_8wt20")
+
+[node name="CharacterBody3D" parent="." instance=ExtResource("1_6ms7h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 3, 0)
